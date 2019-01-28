@@ -1,0 +1,98 @@
+.btn {
+    display: inline-block;
+    padding: ($btn-padding/2) $btn-padding;
+    font-size: $fontSize;
+    line-height: 1.42857143;
+    text-align: center;
+    cursor: pointer;
+    border: $border solid transparent;
+    border-radius: $radius;
+    &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  &:active
+  {
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  }
+}
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:focus {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 25%);
+  }
+  &:hover,&:active,&.active {
+    color: $color;
+    background-color: darken($background, 10%);
+    border-color: darken($border, 12%);
+     text-decoration: none;
+  }
+  &[disabled],
+  &.disabled{
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+    opacity: .65;
+    &:hover,
+    &:focus {
+        background-color: $background;
+        border-color: $border;
+    }
+  }
+}
+.btn-default {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+.btn-primary {
+  @include button-variant($btn-color, $btn-primary-bg, $btn-primary-border);
+}
+// Success appears as green
+.btn-success {
+  @include button-variant($btn-color, $btn-success-bg, $btn-success-border);
+}
+// Info appears as blue-green
+.btn-info {
+  @include button-variant($btn-color, $btn-info-bg, $btn-info-border);
+}
+// Warning appears as orange
+.btn-warning {
+  @include button-variant($btn-color, $btn-warning-bg, $btn-warning-border);
+}
+// Danger and error appear as red
+.btn-danger {
+  @include button-variant($btn-color, $btn-danger-bg, $btn-danger-border);
+}
+.btn-link {
+    @include button-variant($btn-link-color, $btn-link-bg, $btn-link-border);
+    &:hover,
+    &:active,
+    &.active,
+    &:focus
+    {
+        color: $dark-blue;
+        text-decoration: underline;
+    }
+}
+@mixin button-size($padding, $size, $line,$border) {
+  padding: $padding;
+  font-size: $size;
+  line-height: $line;
+  border-radius: $border;
+}
+.btn-sm
+{
+   @include  button-size($btn-padding-sm,$btn-size-sm, $btn-line-sm,$btn-border-sm);
+}
+.btn-lg
+{
+   @include  button-size($btn-padding-lg,$btn-size-lg, $btn-line-lg,$btn-border-lg);
+}
+.btn-xs
+{
+    @include  button-size($btn-padding-xs,$btn-size-xs, $btn-line-xs,$btn-border-xs);
+}
